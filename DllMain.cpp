@@ -11,7 +11,7 @@ BOOL APIENTRY DllMain(HINSTANCE hInstance, DWORD fwdReason, LPVOID lpvReserved)
 
 			Sleep(10000);
 
-			CreateThread(nullptr, 0, Fiesta::InstallHook, hInstance, 0, nullptr);
+			CreateThread(nullptr, 0, Fiesta::Install, hInstance, 0, nullptr);
 			break;
 	}
 

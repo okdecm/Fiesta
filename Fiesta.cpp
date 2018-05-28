@@ -3,12 +3,14 @@
 
 #include "Fiesta.h"
 
-#include "Hooks\CustomClasses\CustomClasses.h"
+#include "Modifications\Interface\ExtraMenuTextures\ExtraMenuTextures.h"
 
 FiestaSettings* Fiesta::Settings = new FiestaSettings();
 FiestaProcess* Fiesta::Process = new FiestaProcess();
 
-DWORD WINAPI Fiesta::InstallHook(LPVOID lpParameter)
+ExtraMenuTextures* extraMenuTextures = new ExtraMenuTextures();
+
+DWORD WINAPI Fiesta::Install(LPVOID lpParameter)
 {
 	Process->Initialize();
 
@@ -29,6 +31,8 @@ DWORD WINAPI Fiesta::InstallHook(LPVOID lpParameter)
 			return 0;
 		break;
 	}
+
+	extraMenuTextures->Initialize(Process);
 
 	int patchError = Process->PatchCode();
 
@@ -54,10 +58,10 @@ DWORD WINAPI Fiesta::InstallHook(LPVOID lpParameter)
 		return 0;
 	}
 
-	if (Settings->GetCustomClassesEnabled())
-	{
-		CustomClasses::Initialize();
-	}
+	//if (Settings->GetCustomClassesEnabled())
+	//{
+		//CustomClasses::Initialize();
+	//}
 
 	return 0;
 }

@@ -4,6 +4,7 @@
 #define PatchCode_Header_Not_Found			1
 #define PatchCode_Could_Not_Open_Process	2
 
+[event_source(native)]
 class Process
 {
 	private:
@@ -18,9 +19,9 @@ class Process
 		void Initialize();
 
 		int PatchCode();
-		virtual void OnPatchCode(HANDLE process) = 0;
+		__event void OnPatchCode(HANDLE process);
 		bool InstallDetours();
-		virtual void OnInstallDetours() = 0;
+		__event void OnInstallDetours();
 
 		bool GetSectionHeaderInfo(char* sectionName, PIMAGE_SECTION_HEADER& dest);
 

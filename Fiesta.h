@@ -9,5 +9,5 @@ class Fiesta
 		static FiestaSettings* Settings;
 		static FiestaProcess* Process;
 
-		static DWORD WINAPI InstallHook(LPVOID lpParameter);
+		static DWORD WINAPI Install(LPVOID lpParameter);
 };
