@@ -20,8 +20,21 @@ class Process
 
 		int PatchCode();
 		__event void OnPatchCode(HANDLE process);
+		/*
+		virtual void OnPatchCode(HANDLE process)
+		{
+
+		}
+		*/
+
 		bool InstallDetours();
 		__event void OnInstallDetours();
+		/*
+		virtual void OnInstallDetours()
+		{
+
+		}
+		*/
 
 		bool GetSectionHeaderInfo(char* sectionName, PIMAGE_SECTION_HEADER& dest);
 

@@ -48,6 +48,15 @@
     <ClCompile Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_Create_GetTexturePath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_Check.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_Set.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_SetReturn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fiesta.h">
@@ -93,6 +102,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_Create_GetTexturePath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_Check.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_Set.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_SetReturn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

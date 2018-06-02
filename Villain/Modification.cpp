@@ -38,7 +38,7 @@ void Modification::AddHook(Hook * hook)
 
 Modification::~Modification()
 {
-	if(_isHooked)
+	if (_isHooked)
 	{
 		__unhook(&Process::OnPatchCode, _process, &Modification::PatchCode);
 		__unhook(&Process::OnInstallDetours, _process, &Modification::InstallDetours);

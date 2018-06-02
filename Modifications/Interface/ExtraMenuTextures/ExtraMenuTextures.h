@@ -12,4 +12,6 @@ class ExtraMenuTextures : public Modification
 };
 
 bool ExtraTextureExists(int id);
-string GetTexturePath(int id);
+char* GetTexturePath(int id);
+DWORD GetLoadedTexturePointer(int id);
+void SetLoadedTexturePointer(int id, DWORD value);

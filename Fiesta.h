@@ -3,6 +3,8 @@
 #include "FiestaSettings.h"
 #include "FiestaProcess.h"
 
+#include "Modifications\Interface\ExtraMenuTextures\ExtraMenuTextures.h"
+
 class Fiesta
 {
 	public:
@@ -11,3 +13,5 @@ class Fiesta
 
 		static DWORD WINAPI Install(LPVOID lpParameter);
 };
+
+extern ExtraMenuTextures* extraMenuTextures;

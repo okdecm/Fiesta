@@ -8,7 +8,7 @@
 FiestaSettings* Fiesta::Settings = new FiestaSettings();
 FiestaProcess* Fiesta::Process = new FiestaProcess();
 
-ExtraMenuTextures* extraMenuTextures = new ExtraMenuTextures();
+extern ExtraMenuTextures* extraMenuTextures = new ExtraMenuTextures();
 
 DWORD WINAPI Fiesta::Install(LPVOID lpParameter)
 {
@@ -39,7 +39,7 @@ DWORD WINAPI Fiesta::Install(LPVOID lpParameter)
 	if (patchError > 0)
 	{
 		char patchErrorMessage[256];
-		sprintf_s(patchErrorMessage, 256, "There was an error patching Fiesta.");
+		sprintf_s(patchErrorMessage, 256, "There was an error patching Fiesta. Error Code %d", patchError);
 
 		MessageBox(NULL, patchErrorMessage, "Fiesta", MB_ICONERROR);
 
@@ -51,17 +51,12 @@ DWORD WINAPI Fiesta::Install(LPVOID lpParameter)
 	if (hookError)
 	{
 		char hookErrorMessage[256];
-		sprintf_s(hookErrorMessage, 256, "There was an error modifying Fiesta.");
+		sprintf_s(hookErrorMessage, 256, "There was an error modifying Fiesta. Error Code %d", hookError);
 
 		MessageBox(NULL, hookErrorMessage, "Fiesta", MB_ICONERROR);
 
 		return 0;
 	}
-
-	//if (Settings->GetCustomClassesEnabled())
-	//{
-		//CustomClasses::Initialize();
-	//}
 
 	return 0;
 }

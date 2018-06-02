@@ -4,5 +4,6 @@
 
 class FiestaProcess : public Process
 {
-
+	void OnPatchCode(HANDLE process);
+	void OnInstallDetours();
 };

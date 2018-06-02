@@ -2,18 +2,23 @@
 #include <fstream>
 #include "Generic.h"
 
-char* CreateBuffer(int size)
+BYTE* CreateBuffer(int size)
 {
 	return CreateBuffer(size, 0x0);
 }
 
-char* CreateBuffer(int size, BYTE with)
+BYTE* CreateBuffer(int size, BYTE with)
 {
-	char* buffer = new char[size];
+	BYTE* buffer = new BYTE[size];
 
-	FillMemory(buffer, size, with);
+	memset(buffer, 0x90, size);
 
 	return buffer;
+}
+
+char* CreateString(int size)
+{
+	return new char[size];
 }
 
 bool FileExists(char* path)

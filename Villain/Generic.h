@@ -1,7 +1,8 @@
 #pragma once
 
-char* CreateBuffer(int size);
-char* CreateBuffer(int size, BYTE with);
+BYTE* CreateBuffer(int size);
+BYTE* CreateBuffer(int size, BYTE with);
+char* CreateString(int size);
 bool FileExists(char* path);
 void FillProcessMemory(HANDLE process, DWORD pointer, int length, BYTE with);
 void FillProcessMemory(HANDLE process, DWORD pointer, int length);
