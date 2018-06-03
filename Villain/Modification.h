@@ -17,7 +17,7 @@ class Modification
 		vector<Hook*> _hooks;
 
 	public:
-		void Initialize(Process* process);
+		bool Initialize(Process* process);
 
 		void PatchCode(HANDLE process);
 		void InstallDetours();

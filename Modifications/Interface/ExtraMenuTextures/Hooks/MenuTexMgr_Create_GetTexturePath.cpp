@@ -26,23 +26,26 @@ extern const int MenuTexMgr_Create_GetTexturePath_Length = 7;
 void(__stdcall* MenuTexMgr_Create_GetTexturePath_Detour)();
 void __declspec(naked) MenuTexMgr_Create_GetTexturePath_Method()
 {
-	DWORD texturePath;
-
 	__asm
 	{
 		CMP ESI, 0x20
 		JB _OnBelowLimit
+		PUSH 0
+		PUSH EDI
+		LEA EDI, DWORD PTR DS : [ESP + 4]
 		PUSHAD
 		PUSH ESI
 		CALL GetTexturePath
 		ADD ESP, 4
-		MOV texturePath, EAX
+		MOV DWORD PTR DS : [EDI], EAX
 		POPAD
-		MOV EAX, texturePath
+		POP EDI
+		MOV EAX, DWORD PTR DS : [ESP]
+		ADD ESP, 4
 		JMP MenuTexMgr_Create_GetTexturePath_Detour
 
 		_OnBelowLimit:
-		MOV EAX, DWORD PTR DS : [ESI * 4 + 0xA6A0B0]
-		JMP MenuTexMgr_Create_GetTexturePath_Detour
+			MOV EAX, DWORD PTR DS : [ESI * 4 + 0xA6A0B0]
+			JMP MenuTexMgr_Create_GetTexturePath_Detour
 	}
 }

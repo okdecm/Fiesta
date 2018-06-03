@@ -2,7 +2,7 @@
 
 #include "Villain\Generic.h"
 
-void Modification::Initialize(Process* process)
+bool Modification::Initialize(Process* process)
 {
 	if(!_isHooked)
 	{
@@ -13,6 +13,8 @@ void Modification::Initialize(Process* process)
 		__hook(&Process::OnPatchCode, _process, &Modification::PatchCode, this);
 		__hook(&Process::OnInstallDetours, _process, &Modification::InstallDetours, this);
 	}
+
+	return true;
 }
 
 void Modification::PatchCode(HANDLE process)

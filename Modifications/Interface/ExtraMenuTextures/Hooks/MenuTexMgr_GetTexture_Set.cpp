@@ -26,8 +26,6 @@ extern const int MenuTexMgr_GetTexture_Set_Length = 7;
 void(__stdcall* MenuTexMgr_GetTexture_Set_Detour)();
 void __declspec(naked) MenuTexMgr_GetTexture_Set_Method()
 {
-	DWORD textureLoadedAt;
-
 	__asm
 	{
 		CMP EBX, 0x20

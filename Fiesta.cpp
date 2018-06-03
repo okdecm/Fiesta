@@ -32,7 +32,16 @@ DWORD WINAPI Fiesta::Install(LPVOID lpParameter)
 		break;
 	}
 
-	extraMenuTextures->Initialize(Process);
+	bool hasInitializedAllHooks = true;
+
+	hasInitializedAllHooks &= extraMenuTextures->Initialize(Process);
+
+	if (!hasInitializedAllHooks)
+	{
+		MessageBox(nullptr, "Failed to initialize all hooks", "Fiesta", MB_ICONERROR);
+
+		return 0;
+	}
 
 	int patchError = Process->PatchCode();
 

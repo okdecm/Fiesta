@@ -9,7 +9,8 @@ BOOL APIENTRY DllMain(HINSTANCE hInstance, DWORD fwdReason, LPVOID lpvReserved)
 		case DLL_PROCESS_ATTACH:
 			DisableThreadLibraryCalls(hInstance);
 
-			Sleep(10000);
+			// TODO: Remove - here so we have time to attach a debugger
+			Sleep(4000);
 
 			CreateThread(nullptr, 0, Fiesta::Install, hInstance, 0, nullptr);
 			break;

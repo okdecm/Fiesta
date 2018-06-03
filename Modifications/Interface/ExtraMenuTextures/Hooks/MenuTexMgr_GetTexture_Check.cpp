@@ -26,19 +26,22 @@ extern const int MenuTexMgr_GetTexture_Check_Length = 7;
 void(__stdcall* MenuTexMgr_GetTexture_Check_Detour)();
 void __declspec(naked) MenuTexMgr_GetTexture_Check_Method()
 {
-	DWORD textureLoadedAt;
-
 	__asm
 	{
 		CMP EBX, 0x20
 		JB _OnBelowLimit
+		PUSH 0
+		PUSH EDI
+		LEA EDI, DWORD PTR DS : [ESP + 4]
 		PUSHAD
 		PUSH EBX
 		CALL GetLoadedTexturePointer
 		ADD ESP, 4
-		MOV textureLoadedAt, EAX
+		MOV DWORD PTR DS : [EDI], EAX
 		POPAD
-		MOV ESI, textureLoadedAt
+		POP EDI
+		MOV ESI, DWORD PTR DS : [ESP]
+		ADD ESP, 4
 		JMP MenuTexMgr_GetTexture_Check_Detour
 
 		_OnBelowLimit :

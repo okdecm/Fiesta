@@ -26,12 +26,9 @@ extern const int MenuTexMgr_GetTexture_UpdateLimit_Length = 18;
 void(__stdcall* MenuTexMgr_GetTexture_UpdateLimit_Detour)();
 void __declspec(naked) MenuTexMgr_GetTexture_UpdateLimit_Method()
 {
-	DWORD textureLoadedAt;
-
 	__asm
 	{
-
-		MOV EBX, 0x21
+		//MOV EBX, 0x21
 		CMP EBX, 0x20
 		JB _OnBelowLimit
 		PUSHAD
@@ -47,12 +44,19 @@ void __declspec(naked) MenuTexMgr_GetTexture_UpdateLimit_Method()
 		RETN
 
 		_OnExtraTexture:
+			POPAD
+			PUSH 0
+			PUSH EDI
+			LEA EDI, DWORD PTR DS : [ESP + 4]
+			PUSHAD
 			PUSH EBX
 			CALL GetLoadedTexturePointer
 			ADD ESP, 4
-			MOV textureLoadedAt, EAX
+			MOV DWORD PTR DS : [EDI], EAX
 			POPAD
-			CMP textureLoadedAt, 0
+			POP EDI
+			ADD ESP, 4
+			CMP DWORD PTR DS : [ESP - 4], 0
 			JMP MenuTexMgr_GetTexture_UpdateLimit_Detour
 
 		_OnBelowLimit:
