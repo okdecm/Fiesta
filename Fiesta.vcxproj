@@ -163,21 +163,35 @@
   <ItemGroup>
     <ClCompile Include="DllMain.cpp" />
     <ClCompile Include="Fiesta.cpp" />
-    <ClCompile Include="FiestaProcess.cpp" />
-    <ClCompile Include="Hooks\CustomClasses\CustomClass.cpp" />
-    <ClCompile Include="Hooks\CustomClasses\CustomClasses.cpp" />
+    <ClCompile Include="Modifications\CustomClasses\CustomClass.cpp" />
+    <ClCompile Include="Modifications\CustomClasses\CustomClasses.cpp" />
+    <ClCompile Include="Modifications\Interface\ExtraMenuTextures\ExtraMenuTextures.cpp" />
+    <ClCompile Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_Create_GetTexturePath.cpp" />
+    <ClCompile Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_Check.cpp" />
+    <ClCompile Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_Set.cpp" />
+    <ClCompile Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_SetReturn.cpp" />
+    <ClCompile Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_UpdateLimit.cpp" />
     <ClCompile Include="Villain\Generic.cpp" />
+    <ClCompile Include="Villain\Modification.cpp" />
     <ClCompile Include="Villain\Process.cpp" />
     <ClCompile Include="FiestaSettings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fiesta.h" />
     <ClInclude Include="FiestaProcess.h" />
-    <ClInclude Include="Hooks\CustomClasses\CustomClass.h" />
+    <ClInclude Include="Modifications\CustomClasses\CustomClass.h" />
     <ClInclude Include="Game\Pointers.h" />
-    <ClInclude Include="Hooks\CustomClasses\CustomClasses.h" />
+    <ClInclude Include="Modifications\CustomClasses\CustomClasses.h" />
+    <ClInclude Include="Modifications\Interface\ExtraMenuTextures\ExtraMenuTextures.h" />
     <ClInclude Include="Include\ThirdParty\Detours\Detours.h" />
+    <ClInclude Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_Create_GetTexturePath.h" />
+    <ClInclude Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_Check.h" />
+    <ClInclude Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_Set.h" />
+    <ClInclude Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_SetReturn.h" />
+    <ClInclude Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_UpdateLimit.h" />
     <ClInclude Include="Villain\Generic.h" />
+    <ClInclude Include="Villain\Hook.h" />
+    <ClInclude Include="Villain\Modification.h" />
     <ClInclude Include="Villain\Process.h" />
     <ClInclude Include="FiestaSettings.h" />
     <ClInclude Include="Villain\Settings.h" />

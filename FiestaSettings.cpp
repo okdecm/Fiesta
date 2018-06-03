@@ -11,7 +11,7 @@ int FiestaSettings::LoadSettings(char* iniPath)
 		return LoadSettings_File_Not_Found;
 	}
 
-	char* iniBuffer = CreateBuffer(128);
+	char* iniBuffer = CreateString(128);
 
 	GetPrivateProfileString("Game", "CustomClassesEnabled", "false", iniBuffer, 128, iniPath);
 	SetCustomClassesEnabled(iniBuffer);

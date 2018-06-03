@@ -51,7 +51,8 @@ int Process::PatchCode()
 
 	VirtualProtectEx(process, (DWORD*)baseCodeAddress, codeSection->SizeOfRawData, PAGE_EXECUTE_READWRITE, &lpflOldProtect);
 
-	OnPatchCode(process);
+	__raise OnPatchCode(process);
+	//OnPatchCode(process);
 
 	CloseHandle(process);
 
@@ -66,7 +67,8 @@ bool Process::InstallDetours()
 	DetourTransactionBegin();
 	DetourUpdateThread(GetCurrentThread());
 
-	OnInstallDetours();
+	__raise OnInstallDetours();
+	//OnInstallDetours();
 
 	result |= (DetourTransactionCommit() != 0);
 

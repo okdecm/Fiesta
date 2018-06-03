@@ -4,7 +4,6 @@
 
 class FiestaProcess : public Process
 {
-	public:
-		virtual void OnPatchCode(HANDLE process);
-		virtual void OnInstallDetours();
+	void OnPatchCode(HANDLE process);
+	void OnInstallDetours();
 };

@@ -3,12 +3,14 @@
 
 #include "Fiesta.h"
 
-#include "Hooks\CustomClasses\CustomClasses.h"
+#include "Modifications\Interface\ExtraMenuTextures\ExtraMenuTextures.h"
 
 FiestaSettings* Fiesta::Settings = new FiestaSettings();
 FiestaProcess* Fiesta::Process = new FiestaProcess();
 
-DWORD WINAPI Fiesta::InstallHook(LPVOID lpParameter)
+extern ExtraMenuTextures* extraMenuTextures = new ExtraMenuTextures();
+
+DWORD WINAPI Fiesta::Install(LPVOID lpParameter)
 {
 	Process->Initialize();
 
@@ -30,12 +32,23 @@ DWORD WINAPI Fiesta::InstallHook(LPVOID lpParameter)
 		break;
 	}
 
+	bool hasInitializedAllHooks = true;
+
+	hasInitializedAllHooks &= extraMenuTextures->Initialize(Process);
+
+	if (!hasInitializedAllHooks)
+	{
+		MessageBox(nullptr, "Failed to initialize all hooks", "Fiesta", MB_ICONERROR);
+
+		return 0;
+	}
+
 	int patchError = Process->PatchCode();
 
 	if (patchError > 0)
 	{
 		char patchErrorMessage[256];
-		sprintf_s(patchErrorMessage, 256, "There was an error patching Fiesta.");
+		sprintf_s(patchErrorMessage, 256, "There was an error patching Fiesta. Error Code %d", patchError);
 
 		MessageBox(NULL, patchErrorMessage, "Fiesta", MB_ICONERROR);
 
@@ -47,16 +60,11 @@ DWORD WINAPI Fiesta::InstallHook(LPVOID lpParameter)
 	if (hookError)
 	{
 		char hookErrorMessage[256];
-		sprintf_s(hookErrorMessage, 256, "There was an error modifying Fiesta.");
+		sprintf_s(hookErrorMessage, 256, "There was an error modifying Fiesta. Error Code %d", hookError);
 
 		MessageBox(NULL, hookErrorMessage, "Fiesta", MB_ICONERROR);
 
 		return 0;
-	}
-
-	if (Settings->GetCustomClassesEnabled())
-	{
-		CustomClasses::Initialize();
 	}
 
 	return 0;
