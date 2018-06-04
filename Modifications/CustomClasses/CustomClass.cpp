@@ -31,31 +31,24 @@ vector<CustomClass> CustomClass::Deserialize(json jsonData, CustomClass* parent)
 	vector<CustomClass> customClasses;
 
 	for (json::iterator iterator = jsonData.begin(); iterator != jsonData.end(); ++iterator) {
-		try
-		{
-			json customClassJsonData = iterator.value();
+		json customClassJsonData = iterator.value();
 
-			CustomClass customClass;
+		CustomClass customClass;
 			
-			customClass.ID = (unsigned int)customClassJsonData.at("ID").get<uint64_t>();
-			customClass.Name = customClassJsonData.at("Name").get<string>();
+		customClass.ID = (unsigned int)customClassJsonData.at("ID").get<uint64_t>();
+		customClass.Name = customClassJsonData.at("Name").get<string>();
 
-			if (parent)
-			{
-				customClass.Parent = parent;
-			}
-
-			if (customClassJsonData.find("Children") != customClassJsonData.end())
-			{
-				customClass.Children = Deserialize(customClassJsonData.at("Children"), &customClass);
-			}
-
-			customClasses.push_back(customClass);
-		}
-		catch (...)
+		if (parent)
 		{
-			// Do nothing
+			customClass.Parent = parent;
 		}
+
+		if (customClassJsonData.find("Children") != customClassJsonData.end())
+		{
+			customClass.Children = Deserialize(customClassJsonData.at("Children"), &customClass);
+		}
+
+		customClasses.push_back(customClass);
 	}
 
 	return customClasses;

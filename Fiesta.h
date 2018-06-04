@@ -4,6 +4,7 @@
 #include "FiestaProcess.h"
 
 #include "Modifications\Interface\ExtraMenuTextures\ExtraMenuTextures.h"
+#include "Modifications\CustomClasses\CustomClasses.h"
 
 class Fiesta
 {
@@ -15,3 +16,4 @@ class Fiesta
 };
 
 extern ExtraMenuTextures* extraMenuTextures;
+extern CustomClasses* customClasses;

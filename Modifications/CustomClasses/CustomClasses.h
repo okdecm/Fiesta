@@ -2,29 +2,14 @@
 
 #include <vector>
 
+#include "Villain\Modification.h"
+
 #include "CustomClass.h"
 
-class CustomClasses
+class CustomClasses : public Modification
 {
-	private:
-		static void InitializeButtonData();
 	public:
-		static vector<CustomClass> Classes;
+		vector<CustomClass> Classes;
 
-		static void Initialize();
+		bool Initialize(Process* process);
 };
-
-struct CustomClassButtonData
-{
-	unsigned int ClassID;
-	char* ButtonName;
-	unsigned int ButtonIndex;
-};
-
-extern int CustomClassesCount;
-extern CustomClassButtonData* CustomClassButtonDatas;
-
-extern void(__stdcall* Hook_CharCreateClassWin_CreateWin)();
-extern void CharCreateClassWin_CreateWin();
-
-extern void CharCreateClassWin_CreateWin_AddButton(char* buttonName, int buttonIndex, int classID);

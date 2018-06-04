@@ -60,7 +60,7 @@ bool ExtraMenuTextures::Initialize(Process* process)
 	AddHook(new MenuTexMgr_GetTexture_Set());
 	AddHook(new MenuTexMgr_GetTexture_SetReturn());
 
-	Modification::Initialize(process);
+	return Modification::Initialize(process);
 }
 
 bool ExtraTextureExists(int id)
