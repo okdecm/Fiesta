@@ -56,9 +56,9 @@ bool ExtraMenuTextures::Initialize(Process* process)
 
 	AddHook(new MenuTexMgr_GetTexture_UpdateLimit());
 	AddHook(new MenuTexMgr_Create_GetTexturePath());
-	AddHook(new MenuTexMgr_GetTexture_Check());
-	AddHook(new MenuTexMgr_GetTexture_Set());
-	AddHook(new MenuTexMgr_GetTexture_SetReturn());
+	//AddHook(new MenuTexMgr_GetTexture_Check());
+	//AddHook(new MenuTexMgr_GetTexture_Set());
+	//AddHook(new MenuTexMgr_GetTexture_SetReturn());
 
 	Modification::Initialize(process);
 }

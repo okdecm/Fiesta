@@ -20,27 +20,25 @@ void MenuTexMgr_GetTexture_UpdateLimit::InstallDetour()
 	}
 }
 
-extern const DWORD MenuTexMgr_GetTexture_UpdateLimit_Pointer = 0x0042A4A7;
-extern const int MenuTexMgr_GetTexture_UpdateLimit_Length = 18;
+extern const DWORD MenuTexMgr_GetTexture_UpdateLimit_Pointer = 0x00408774;
+extern const int MenuTexMgr_GetTexture_UpdateLimit_Length = 25;
 
 void(__stdcall* MenuTexMgr_GetTexture_UpdateLimit_Detour)();
 void __declspec(naked) MenuTexMgr_GetTexture_UpdateLimit_Method()
 {
 	__asm
 	{
-		//MOV EBX, 0x21
-		CMP EBX, 0x20
+		//MOV EAX, 0x21
+		CMP EAX, 0x26
 		JB _OnBelowLimit
 		PUSHAD
-		PUSH EBX
+		PUSH EAX
 		CALL ExtraTextureExists
 		ADD ESP, 4
 		TEST EAX, EAX
 		JNZ _OnExtraTexture
 		POPAD
 		XOR EAX, EAX
-		POP EBX
-		POP EBP
 		RETN
 
 		_OnExtraTexture:
@@ -49,18 +47,24 @@ void __declspec(naked) MenuTexMgr_GetTexture_UpdateLimit_Method()
 			PUSH EDI
 			LEA EDI, DWORD PTR DS : [ESP + 4]
 			PUSHAD
-			PUSH EBX
+			PUSH EAX
 			CALL GetLoadedTexturePointer
 			ADD ESP, 4
 			MOV DWORD PTR DS : [EDI], EAX
 			POPAD
 			POP EDI
 			ADD ESP, 4
-			CMP DWORD PTR DS : [ESP - 4], 0
+			MOV ECX, DWORD PTR DS : [ESP - 4]
+			TEST ECX, ECX
+			PUSH ESI
+			LEA ESI, DWORD PTR DS : [ESP - 8]
 			JMP MenuTexMgr_GetTexture_UpdateLimit_Detour
 
 		_OnBelowLimit:
-			CMP DWORD PTR DS : [EBX * 4 + 0xA89CA0], 0
+			MOV ECX, DWORD PTR DS : [EAX * 4 + 0x913658]
+			TEST ECX, ECX
+			PUSH ESI
+			LEA ESI, DWORD PTR DS : [EAX * 4 + 0x913658]
 			JMP MenuTexMgr_GetTexture_UpdateLimit_Detour
 	}
 }

@@ -108,7 +108,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(OutDir)$(TargetName).*" "D:\Games\Fiesta\Gamigo\US\" /F /R /Y /I</Command>
+      <Command>xcopy "$(OutDir)$(TargetName).*" "D:\Games\Fiesta\CN_Mix\" /F /R /Y /I</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copies the built DLL to the Gamigo US client folder</Message>
@@ -126,7 +126,7 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(OutDir)$(TargetName).*" "D:\Games\Fiesta\Gamigo\US\" /F /R /Y /I</Command>
+      <Command>xcopy "$(OutDir)$(TargetName).*" "D:\Games\Fiesta\CN_Mix\" /F /R /Y /I</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copies the built DLL to the Gamigo US client folder</Message>

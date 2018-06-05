@@ -20,7 +20,7 @@ void MenuTexMgr_Create_GetTexturePath::InstallDetour()
 	}
 }
 
-extern const DWORD MenuTexMgr_Create_GetTexturePath_Pointer = 0x0042A415;
+extern const DWORD MenuTexMgr_Create_GetTexturePath_Pointer = 0x004086E9;
 extern const int MenuTexMgr_Create_GetTexturePath_Length = 7;
 
 void(__stdcall* MenuTexMgr_Create_GetTexturePath_Detour)();
@@ -28,24 +28,24 @@ void __declspec(naked) MenuTexMgr_Create_GetTexturePath_Method()
 {
 	__asm
 	{
-		CMP ESI, 0x20
+		CMP EAX, 0x26
 		JB _OnBelowLimit
 		PUSH 0
 		PUSH EDI
 		LEA EDI, DWORD PTR DS : [ESP + 4]
 		PUSHAD
-		PUSH ESI
+		PUSH EAX
 		CALL GetTexturePath
 		ADD ESP, 4
 		MOV DWORD PTR DS : [EDI], EAX
 		POPAD
 		POP EDI
-		MOV EAX, DWORD PTR DS : [ESP]
+		MOV ECX, DWORD PTR DS : [ESP]
 		ADD ESP, 4
 		JMP MenuTexMgr_Create_GetTexturePath_Detour
 
 		_OnBelowLimit:
-			MOV EAX, DWORD PTR DS : [ESI * 4 + 0xA6A0B0]
+			MOV ECX, DWORD PTR DS : [EAX * 4 + 0x904018]
 			JMP MenuTexMgr_Create_GetTexturePath_Detour
 	}
 }
