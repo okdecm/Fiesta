@@ -57,6 +57,9 @@
     <ClCompile Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_SetReturn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Modifications\CustomClasses\Hooks\CreateClass\CharCreateClassWin_Create_Button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fiesta.h">
@@ -111,6 +114,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Modifications\Interface\ExtraMenuTextures\Hooks\MenuTexMgr_GetTexture_SetReturn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modifications\CustomClasses\Hooks\CreateClass\CharCreateClassWin_Create_Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -30,18 +30,16 @@ void __declspec(naked) MenuTexMgr_GetTexture_SetReturn_Method()
 	{
 		CMP EBX, 0x20
 		JB _OnBelowLimit
-		PUSH 0
-		PUSH EDI
-		LEA EDI, DWORD PTR DS : [ESP + 4]
-		PUSHAD
+		
+		PRE_NON_NAKED_CALL
+
 		PUSH EBX
 		CALL GetLoadedTexturePointer
 		ADD ESP, 4
-		MOV DWORD PTR DS : [EDI], EAX
-		POPAD
-		POP EDI
-		MOV EAX, DWORD PTR DS : [ESP]
-		ADD ESP, 4
+		
+		POST_NON_NAKED_CALL
+		MOV_RESULT_TO(EAX)
+
 		JMP MenuTexMgr_GetTexture_SetReturn_Detour
 
 		_OnBelowLimit :

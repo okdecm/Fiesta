@@ -45,16 +45,15 @@ void __declspec(naked) MenuTexMgr_GetTexture_UpdateLimit_Method()
 
 		_OnExtraTexture:
 			POPAD
-			PUSH 0
-			PUSH EDI
-			LEA EDI, DWORD PTR DS : [ESP + 4]
-			PUSHAD
+			
+			PRE_NON_NAKED_CALL
+			
 			PUSH EBX
 			CALL GetLoadedTexturePointer
 			ADD ESP, 4
-			MOV DWORD PTR DS : [EDI], EAX
-			POPAD
-			POP EDI
+			
+			POST_NON_NAKED_CALL
+
 			ADD ESP, 4
 			CMP DWORD PTR DS : [ESP - 4], 0
 			JMP MenuTexMgr_GetTexture_UpdateLimit_Detour

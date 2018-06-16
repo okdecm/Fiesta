@@ -6,6 +6,8 @@
 
 #include "CustomClass.h"
 
+
+
 class CustomClasses : public Modification
 {
 	public:

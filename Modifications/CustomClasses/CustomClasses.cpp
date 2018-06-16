@@ -1,11 +1,10 @@
-#include <windows.h>
-#include <iostream>
-
 #include "CustomClasses.h"
 
 #include "Villain\Generic.h"
 
 #include "Fiesta.h"
+
+#include "Hooks\CreateClass\CharCreateClassWin_Create_Button.h"
 
 bool CustomClasses::Initialize(Process* process)
 {
@@ -30,7 +29,7 @@ bool CustomClasses::Initialize(Process* process)
 		return false;
 	}
 
-	// TODO: Add Hooks
+	AddHook(new CharCreateClassWin_Create_Button());
 
 	return Modification::Initialize(process);
 }

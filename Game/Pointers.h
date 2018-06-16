@@ -2,10 +2,6 @@
 
 #include <windows.h>
 
-// Hooks
-const DWORD Hook_CharCreateClassWin_CreateWin_Pointer = 0x00405158;
-const DWORD Hook_CharCreateClassWin_CreateWin_Length = 5;
-
 // Game
 const DWORD NiTMapBase_LuaScriptType_SetAt_Pointer = 0x0064E830;
 const DWORD UIUtil_CreateButton_Pointer = 0x00443DD0;

@@ -161,6 +161,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Modifications\CustomClasses\Hooks\CreateClass\CharCreateClassWin_Create_Button.cpp" />
     <ClCompile Include="DllMain.cpp" />
     <ClCompile Include="Fiesta.cpp" />
     <ClCompile Include="Modifications\CustomClasses\CustomClass.cpp" />
@@ -177,6 +178,7 @@
     <ClCompile Include="FiestaSettings.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Modifications\CustomClasses\Hooks\CreateClass\CharCreateClassWin_Create_Button.h" />
     <ClInclude Include="Fiesta.h" />
     <ClInclude Include="FiestaProcess.h" />
     <ClInclude Include="Modifications\CustomClasses\CustomClass.h" />

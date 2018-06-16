@@ -8,6 +8,9 @@ class ExtraMenuTextures : public Modification
 		bool Initialize(Process* process);
 };
 
+map<int, string> extraTextures;
+map<int, DWORD> extraTexturesLoadedAt;
+
 bool ExtraTextureExists(int id);
 char* GetTexturePath(int id);
 DWORD GetLoadedTexturePointer(int id);
